@@ -58,7 +58,7 @@ export default function Home() {
         How&apos;s the sky looking today?
       </h1>
 
-      <div className="flex flex-col sm:not-only-of-type:flex-row items-center justify-center gap-3 sm:gap-5">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
         <div className="relative w-full sm:w-[500px]">
           <input
             type="text"
