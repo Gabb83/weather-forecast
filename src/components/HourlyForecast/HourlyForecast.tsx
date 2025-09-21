@@ -21,7 +21,7 @@ export default function HourlyForecast({
   const totalPaginas = Math.ceil(hourly.time.length / itensPorPagina);
 
   return (
-    <div className="bg-[#262540] border-none rounded-md p-5 text-white">
+    <div className="block bg-[#262540] border-none rounded-md p-5 text-white">
       <div className="flex flex-row items-center justify-around gap-10">
         <p>Hourly Forecast</p>
         <select

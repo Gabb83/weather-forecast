@@ -52,9 +52,9 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[#02012C] p-10 min-h-screen">
+    <div className="bg-[#02012C] p-5 sm:p-10 min-h-screen">
       <Header />
-      <h1 className="text-center text-[40px] font-bold py-10 text-white">
+      <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10 text-white">
         How's the sky looking today?
       </h1>
 
@@ -66,6 +66,11 @@ export default function Home() {
             className="w-full h-[40px] bg-[#262540] border-none rounded-md pl-10 text-white"
             value={cidade}
             onChange={(e) => setCidade(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           <Image
             alt="icon search"
@@ -76,7 +81,7 @@ export default function Home() {
           />
         </div>
         <button
-          className="w-[90px] h-[40px] bg-[#4658D9] font-medium border-none rounded-md cursor-pointer text-white"
+          className="hidden sm:block w-[90px] h-[40px] bg-[#4658D9] font-medium border-none rounded-md cursor-pointer text-white"
           onClick={handleSearch}
         >
           Search
@@ -86,15 +91,21 @@ export default function Home() {
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
       {weather && (
-        <div className="grid grid-cols-3 gap-5 my-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-1 md:gap-5 my-10">
           {/* COLUNA PRINCIPAL */}
-          <div className="col-span-2">
+          <div className="col-span-1 lg:col-span-2">
             <InfoForecast weather={weather}/>
             <DailyForecast daily={weather.daily} />
+            
+            <div className="block lg:hidden mt-5">
+              <HourlyForecast hourly={weather.hourly} />
+            </div>
           </div>
 
           {/* SIDEBAR HOURLY FORECAST */}
-          <HourlyForecast hourly={weather.hourly} />
+          <div className="hidden lg:block">
+            <HourlyForecast hourly={weather.hourly} />
+          </div>
         </div>
       )}
     </div>

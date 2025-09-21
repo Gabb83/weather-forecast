@@ -11,7 +11,7 @@ export default function CardDailyForecast({
   tempMinima, tempMaxima, icone, diaSemana
 } : CardDailyForecastProps) {
   return (
-    <div className="w-[200px] bg-[#262540] flex flex-col items-center border border-[#3C3B5E] rounded-md p-2">
+    <div className="w-full bg-[#262540] flex flex-col items-center border border-[#3C3B5E] rounded-md p-2">
       <p>{diaSemana}</p>
       <Image
         alt="icone do clima"

@@ -46,9 +46,9 @@ export default function InfoForecast({
           fill
           className="object-cover z-0"
         />
-        <div className="relative z-10 w-full h-full flex flex-row justify-between items-center p-5 text-white">
+        <div className="relative z-10 w-full h-full flex flex-row justify-between items-center p-5 text-white gap-3">
           <div>
-            <p className="text-lg">
+            <p className="text-md sm:text-lg">
               {weather.name}, {weather.country}
             </p>
             <p className="text-sm">{formattedDate}</p>
@@ -57,15 +57,16 @@ export default function InfoForecast({
             <Image
               alt="weather icon"
               src="/assets/icon-sunny.webp"
-              width={100}
-              height={100}
+              width={90}
+              height={90}
+              className="hidden sm:block"
             />
-            <p className="text-[40px]">{weather.current.temperature}</p>
+            <p className="text-[30px] sm:text-[40px]">{weather.current.temperature}</p>
           </div>
         </div>
       </div>
       {/* INFOS */}
-      <div className="flex flex-row items-center justify-between gap-2 py-10 text-white">
+      <div className="grid grid-cols-2 lg:grid-cols-4 items-center justify-between gap-2 py-10 text-white">
         {infos.map((info, idx) => (
           <CardInfo key={idx} titulo={info.titulo} dado={info.dado} />
         ))}
