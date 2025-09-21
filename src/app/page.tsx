@@ -46,7 +46,7 @@ export default function Home() {
       const data = await getWeather(latitude, longitude);
 
       setWeather({ ...data, name, country });
-    } catch (erro: any) {
+    } catch (error) {
       setError("Cidade não encontrada");
     }
   }
@@ -55,11 +55,11 @@ export default function Home() {
     <div className="bg-[#02012C] p-5 sm:p-10 min-h-screen">
       <Header />
       <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10 text-white">
-        How's the sky looking today?
+        How&apos;s the sky looking today?
       </h1>
 
-      <div className="flex flex-row items-center justify-center gap-5">
-        <div className="relative w-[500px]">
+      <div className="flex flex-col sm:not-only-of-type:flex-row items-center justify-center gap-3 sm:gap-5">
+        <div className="relative w-full sm:w-[500px]">
           <input
             type="text"
             placeholder="Search for a place..."
@@ -81,7 +81,7 @@ export default function Home() {
           />
         </div>
         <button
-          className="hidden sm:block w-[90px] h-[40px] bg-[#4658D9] font-medium border-none rounded-md cursor-pointer text-white"
+          className="w-full sm:w-[90px] h-[40px] bg-[#4658D9] font-medium border-none rounded-md cursor-pointer text-white"
           onClick={handleSearch}
         >
           Search

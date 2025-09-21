@@ -13,7 +13,7 @@ export default function DailyForecast({
 } : DailyForecastProps) {
   return (
     <div>
-      <p className="text-white">Daily forecast</p>
+      <p className="text-white font-semibold">Daily forecast</p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 py-4">
         {daily.time.map((day, idx) =>(
           <CardDailyForecast

@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import CardHourlyForecast from "./CardHourlyForecast";
 
@@ -23,7 +25,7 @@ export default function HourlyForecast({
   return (
     <div className="block bg-[#262540] border-none rounded-md p-5 text-white">
       <div className="flex flex-row items-center justify-around gap-10">
-        <p>Hourly Forecast</p>
+        <p className="font-semibold">Hourly Forecast</p>
         <select
           name=""
           id=""

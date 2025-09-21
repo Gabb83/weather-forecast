@@ -46,9 +46,9 @@ export default function InfoForecast({
           fill
           className="object-cover z-0"
         />
-        <div className="relative z-10 w-full h-full flex flex-row justify-between items-center p-5 text-white gap-3">
+        <div className="relative z-10 w-full h-full flex flex-col sm:flex-row justify-center sm:justify-between items-center p-5 text-white gap-3">
           <div>
-            <p className="text-md sm:text-lg">
+            <p className="text-center sm:text-start text-md sm:text-lg font-semibold">
               {weather.name}, {weather.country}
             </p>
             <p className="text-sm">{formattedDate}</p>
@@ -57,9 +57,8 @@ export default function InfoForecast({
             <Image
               alt="weather icon"
               src="/assets/icon-sunny.webp"
-              width={90}
-              height={90}
-              className="hidden sm:block"
+              width={100}
+              height={100}
             />
             <p className="text-[30px] sm:text-[40px]">{weather.current.temperature}</p>
           </div>
