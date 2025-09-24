@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CardInfo from "./CardInfo";
+import getClimaIcon from "@/utils/getClimaIcon";
 
 interface InfoForecastProps {
   weather: {
@@ -56,7 +57,7 @@ export default function InfoForecast({
           <div className="flex flex-row items-center gap-3">
             <Image
               alt="weather icon"
-              src="/assets/icon-sunny.webp"
+              src={getClimaIcon(weather.current.weathercode)}
               width={100}
               height={100}
             />

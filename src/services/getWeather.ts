@@ -15,12 +15,14 @@ interface WeatherAPIResponse {
     temperature_2m: number[];
     relative_humidity_2m: number[];
     precipitation: number[];
+    weathercode: number[];
   };
   daily: {
     time: string[];
     temperature_2m_max: number[];
     temperature_2m_min: number[];
     precipitation_sum: number[];
+    weathercode: number[];
   };
 }
 
@@ -32,8 +34,8 @@ export async function getWeather(latitude: number, longitude: number) {
         latitude,
         longitude,
         current_weather: true,
-        hourly: ["temperature_2m", "relative_humidity_2m", "precipitation"].join(","),
-        daily: ["temperature_2m_max", "temperature_2m_min", "precipitation_sum"].join(","),
+        hourly: ["weathercode", "temperature_2m", "relative_humidity_2m", "precipitation"].join(","),
+        daily: ["weathercode", "temperature_2m_max", "temperature_2m_min", "precipitation_sum"].join(","),
         timezone: "auto",
       },
     }

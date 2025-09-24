@@ -2,17 +2,23 @@
 
 import { useState } from "react";
 import CardHourlyForecast from "./CardHourlyForecast";
+import getClimaIcon from "@/utils/getClimaIcon";
 
 interface HourlyForecastProps {
   hourly: {
     time: string[];
     temperature_2m: number[];
+    weathercode: number[];
   };
 }
 
 export default function HourlyForecast({
   hourly 
 } : HourlyForecastProps) {
+  // Verificação de segurança: se os dados não existirem, não renderize nada.
+  if (!hourly || !hourly.weathercode || hourly.weathercode.length === 0) {
+    return null; 
+  }
 
   const [pagina, setPagina] = useState(0);
   const itensPorPagina = 6;
@@ -39,10 +45,10 @@ export default function HourlyForecast({
         {hourly.time.slice(startIdx, endIdx).map((time, idx) => (
           <CardHourlyForecast
             key={startIdx + idx}
-            icon="/assets/icon-sunny.webp"
+            icon={getClimaIcon(hourly.weathercode[startIdx + idx])}
             hora={new Date(time).toLocaleTimeString("pt-BR", {
               hour: '2-digit', minute: '2-digit' 
-            },)}
+            })}
             temperatura={hourly.temperature_2m[startIdx + idx] + "° C"}
           />
         ))}

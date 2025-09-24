@@ -22,11 +22,13 @@ interface WeatherData {
     temperature_2m: number[];
     relative_humidity_2m: number[];
     precipitation: number[];
+    weathercode: number[];
   };
   daily: {
     time: string[];
     temperature_2m_max: number[];
     temperature_2m_min: number[];
+    weathercode: number[];
   };
   name: string;
   country: string;
