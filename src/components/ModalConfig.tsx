@@ -7,12 +7,14 @@ export default function ModalConfig() {
   
   const [openConfigTema, setOpenConfigTema] = useState<"escuro" | "claro">("escuro");
   const [openConfigIdioma, setOpenConfigIdioma] = useState<"inglês" | "português">("inglês");
+  const [openConfigTemperatura, setOpenConfigTemperatura] = useState<"celsius" | "fahrenheit">("celsius"); 
 
   const temas = ["escuro", "claro"] as const;
   const idiomas = ["português", "inglês"] as const;
+  const temperaturas = ["celsius", "fahrenheit"] as const;
 
   return (
-    <div className="bg-[#262540] w-[200px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10">
+    <div className="bg-[#262540] w-[200px] h-[300px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10 overflow-y-auto">
       <div className="flex flex-col gap-2">
         <p className="text-[#ACACB7]">Temas</p>
         {temas.map((tema) => (
@@ -32,6 +34,17 @@ export default function ModalConfig() {
             label={idioma.charAt(0).toUpperCase() + idioma.slice(1)} // Português / Inglês
             isActive={idioma === openConfigIdioma}
             onClick={() => setOpenConfigIdioma(idioma)}
+          />
+        ))}
+      </div>
+      <div className="flex flex-col gap-2 mt-4">
+        <p className="text-[#ACACB7]">Temperatura</p>
+        {temperaturas.map((temperatura) => (
+          <ButtonModalConfig
+            key={temperatura}
+            label={temperatura.charAt(0).toUpperCase() + temperatura.slice(1)} // Português / Inglês
+            isActive={temperatura === openConfigTemperatura}
+            onClick={() => setOpenConfigTemperatura(temperatura)}
           />
         ))}
       </div>
