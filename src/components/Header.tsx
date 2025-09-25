@@ -18,9 +18,9 @@ export default function Header() {
         src="/assets/logo.svg"
         width={150} height={100}
       />
-      <div>
+      <div className="relative">
         <button 
-          className="bg-[#262540] flex flex-row items-center gap-3 border-none rounded-md p-2"
+          className="bg-[#262540] flex flex-row items-center gap-3 border-none rounded-md p-2 cursor-pointer"
           onClick={handleOpenConfig}
         >
           <Image

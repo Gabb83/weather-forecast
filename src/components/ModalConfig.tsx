@@ -12,9 +12,9 @@ export default function ModalConfig() {
   const idiomas = ["português", "inglês"] as const;
 
   return (
-    <div className="bg-[#262540] flex flex-col border border-[#3C3B5E] rounded-md">
-      <div className="flex flex-col">
-        <p>Temas</p>
+    <div className="bg-[#262540] w-[200px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10">
+      <div className="flex flex-col gap-2">
+        <p className="text-[#ACACB7]">Temas</p>
         {temas.map((tema) => (
           <ButtonModalConfig
             key={tema}
@@ -24,8 +24,8 @@ export default function ModalConfig() {
           />
         ))}
       </div>
-      <div className="flex flex-col">
-        <p>Idioma</p>
+      <div className="flex flex-col gap-2 mt-4">
+        <p className="text-[#ACACB7]">Idioma</p>
         {idiomas.map((idioma) => (
           <ButtonModalConfig
             key={idioma}
