@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import Header from "@/components/Header";
@@ -9,6 +9,9 @@ import { getWeather } from "@/services/getWeather";
 import HourlyForecast from "@/components/HourlyForecast/HourlyForecast";
 import DailyForecast from "@/components/DailyForecast/DailyForecast";
 import InfoForecast from "@/components/InfosForecast/InfoForecast";
+import { useTheme } from "next-themes";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 interface WeatherData {
   current: {
@@ -35,9 +38,21 @@ interface WeatherData {
 }
 
 export default function Home() {
+
+const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Garantir que o theme está disponível no client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const bgClass = resolvedTheme === "dark" ? "bg-[#02012C] text-white" : "bg-white text-black";
+
   const [cidade, setCidade] = useState<string>("");
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string>("");
+ const { idioma, setIdioma } = useLanguage();
 
   async function handleSearch() {
     try {
@@ -54,18 +69,18 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[#02012C] p-5 sm:p-10 min-h-screen">
+    <div className={`${bgClass} p-5 sm:p-10 min-h-screen`}>
       <Header />
-      <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10 text-white">
-        How&apos;s the sky looking today?
+      <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10">
+        {translations[idioma].welcome}
       </h1>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
         <div className="relative w-full sm:w-[500px]">
           <input
             type="text"
-            placeholder="Search for a place..."
-            className="w-full h-[40px] bg-[#262540] border-none rounded-md pl-10 text-white"
+            placeholder={translations[idioma].searchPlaceholder}
+            className="w-full h-[40px] bg-[#ffffff] dark:bg-[#262540] border-none rounded-md pl-10 text-white"
             value={cidade}
             onChange={(e) => setCidade(e.target.value)}
             onKeyDown={(e) => {
@@ -86,7 +101,7 @@ export default function Home() {
           className="w-full sm:w-[90px] h-[40px] bg-[#4658D9] font-medium border-none rounded-md cursor-pointer text-white"
           onClick={handleSearch}
         >
-          Search
+          {translations[idioma].search}
         </button>
       </div>
 

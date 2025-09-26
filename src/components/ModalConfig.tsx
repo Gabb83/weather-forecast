@@ -1,50 +1,61 @@
 "use client";
 
 import { useState } from "react";
+import { translations } from "@/utils/translations";
 import ButtonModalConfig from "./ButtonModalConfig";
+import { useTheme } from "next-themes";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ModalConfig() {
-  
-  const [openConfigTema, setOpenConfigTema] = useState<"escuro" | "claro">("escuro");
-  const [openConfigIdioma, setOpenConfigIdioma] = useState<"inglês" | "português">("inglês");
-  const [openConfigTemperatura, setOpenConfigTemperatura] = useState<"celsius" | "fahrenheit">("celsius"); 
+  const { theme, setTheme } = useTheme();
 
-  const temas = ["escuro", "claro"] as const;
-  const idiomas = ["português", "inglês"] as const;
+  // pega o idioma do contexto global
+  const { idioma, setIdioma } = useLanguage();
+
+  const [temperatura, setTemperatura] = useState<"celsius" | "fahrenheit">("celsius");
+
+  const temas = ["dark", "light"] as const;
+  const opcoesIdiomas = ["português", "inglês"] as const; // usar nomes sem acento
   const temperaturas = ["celsius", "fahrenheit"] as const;
 
   return (
     <div className="bg-[#262540] w-[200px] h-[300px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10 overflow-y-auto">
+      
+      {/* Temas */}
       <div className="flex flex-col gap-2">
-        <p className="text-[#ACACB7]">Temas</p>
+        <p className="text-[#ACACB7]">{translations[idioma].theme}</p>
         {temas.map((tema) => (
           <ButtonModalConfig
             key={tema}
-            label={tema.charAt(0).toUpperCase() + tema.slice(1)} 
-            isActive={tema === openConfigTema}
-            onClick={() => setOpenConfigTema(tema)}
+            label={tema === "dark" ? translations[idioma].dark : translations[idioma].light}
+            isActive={theme === tema}
+            onClick={() => setTheme(tema)}
           />
         ))}
       </div>
+
+      {/* Idiomas */}
       <div className="flex flex-col gap-2 mt-4">
-        <p className="text-[#ACACB7]">Idioma</p>
-        {idiomas.map((idioma) => (
+        <p className="text-[#ACACB7]">{translations[idioma].language}</p>
+        {opcoesIdiomas.map((lang) => (
           <ButtonModalConfig
-            key={idioma}
-            label={idioma.charAt(0).toUpperCase() + idioma.slice(1)} // Português / Inglês
-            isActive={idioma === openConfigIdioma}
-            onClick={() => setOpenConfigIdioma(idioma)}
+            key={lang}
+            label={lang === "português" ? "Português" : "Inglês"}  // usa tradução correta
+            isActive={lang === idioma}
+            onClick={() => setIdioma(lang)}
           />
         ))}
       </div>
+
+      {/* Temperaturas */}
       <div className="flex flex-col gap-2 mt-4">
-        <p className="text-[#ACACB7]">Temperatura</p>
-        {temperaturas.map((temperatura) => (
+        <p className="text-[#ACACB7]">{translations[idioma].temperature}</p>
+        {temperaturas.map((temp) => (
           <ButtonModalConfig
-            key={temperatura}
-            label={temperatura.charAt(0).toUpperCase() + temperatura.slice(1)} // Português / Inglês
-            isActive={temperatura === openConfigTemperatura}
-            onClick={() => setOpenConfigTemperatura(temperatura)}
+            key={temp}
+            label={translations[idioma][temp]} // ex: "Celsius" ou "Fahrenheit"
+            isActive={temp === temperatura}
+            onClick={() => setTemperatura(temp)}
           />
         ))}
       </div>

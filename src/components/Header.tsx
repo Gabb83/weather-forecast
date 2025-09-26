@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import ModalConfig from "./ModalConfig";
+import { translations } from "@/utils/translations";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [openConfig, setOpenConfig] = useState(false);
+  const { idioma, setIdioma } = useLanguage();
 
   const handleOpenConfig = () => {
     setOpenConfig(!openConfig);
@@ -28,7 +31,7 @@ export default function Header() {
             src="/assets/icon-units.svg"
             width={20} height={20}
           />
-          <p>Units</p>
+          <p>{translations[idioma].units}</p>
           <Image
             alt="logo app"
             src="/assets/icon-dropdown.svg"

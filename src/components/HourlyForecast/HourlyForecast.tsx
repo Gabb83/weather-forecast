@@ -3,6 +3,8 @@
 import { useState } from "react";
 import CardHourlyForecast from "./CardHourlyForecast";
 import getClimaIcon from "@/utils/getClimaIcon";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 interface HourlyForecastProps {
   hourly: {
@@ -15,6 +17,7 @@ interface HourlyForecastProps {
 export default function HourlyForecast({
   hourly 
 } : HourlyForecastProps) {
+  const { idioma } = useLanguage();
   // Verificação de segurança: se os dados não existirem, não renderize nada.
   if (!hourly || !hourly.weathercode || hourly.weathercode.length === 0) {
     return null; 
@@ -31,14 +34,19 @@ export default function HourlyForecast({
   return (
     <div className="block bg-[#262540] border-none rounded-md p-5 text-white">
       <div className="flex flex-row items-center justify-around gap-10">
-        <p className="font-semibold">Hourly Forecast</p>
+        <p className="font-semibold">{translations[idioma].hourlyForecast}</p>
         <select
           name=""
           id=""
           className="bg-[#3C3B5E] border-none rounded-md p-2"
         >
-          <option value="">Segunda-feira</option>
-          <option value="">Terça-feira</option>
+          <option value="">{translations[idioma].monday}</option>
+          <option value="">{translations[idioma].tuesday}</option>
+          <option value="">{translations[idioma].wednesday}</option>
+          <option value="">{translations[idioma].thursday}</option>
+          <option value="">{translations[idioma].friday}</option>
+          <option value="">{translations[idioma].saturday}</option>
+          <option value="">{translations[idioma].sunday}</option>
         </select>
       </div>
       <div className="flex flex-col gap-3 my-5">
@@ -59,14 +67,14 @@ export default function HourlyForecast({
           onClick={() => setPagina(pagina-1)}
           className="w-[120px] h-[35px] bg-[#4658D9] border-none rounded-md p-1 cursor-pointer hover:bg-[#4657d9ad] transition-all duration-300 ease-in-out"
         >
-          Anterior
+          {translations[idioma].previus}
         </button>
         <button
           disabled={pagina === totalPaginas-1}
           onClick={() => setPagina(pagina+1)}
           className="w-[120px] h-[35px] bg-[#4658D9] border-none rounded-md p-1 cursor-pointer hover:bg-[#4657d9ad] transition-all duration-300 ease-in-out"
         >
-          Próximo
+          {translations[idioma].next}
         </button>
       </div>
     </div>

@@ -1,5 +1,5 @@
 type CardInfoProps = {
-  titulo: string;
+  titulo: string | any;
   dado: string | any;
 }
 

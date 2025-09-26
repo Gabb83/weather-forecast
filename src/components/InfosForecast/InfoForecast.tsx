@@ -1,6 +1,8 @@
 import Image from "next/image";
 import CardInfo from "./CardInfo";
 import getClimaIcon from "@/utils/getClimaIcon";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 interface InfoForecastProps {
   weather: {
@@ -23,6 +25,7 @@ export default function InfoForecast({
   weather
 } : InfoForecastProps) {
 
+  const { idioma } = useLanguage();
   const today = new Date();
   const formattedDate = today.toLocaleDateString("pt-BR", {
     weekday: "long",
@@ -32,10 +35,10 @@ export default function InfoForecast({
   });
 
   const infos = weather ? [
-    { titulo: "Temperature:", dado: weather.current.temperature + "°C" },
-    { titulo: "Wind Speed:", dado: weather.current.windspeed + " km/h" },
-    { titulo: "Humidity:", dado: weather.hourly.relative_humidity_2m[0] + "%" },
-    { titulo: "Precipitação:", dado: weather.hourly.precipitation[0] + "mm" },
+    { titulo: translations[idioma].temperature, dado: weather.current.temperature + "°C" },
+    { titulo: translations[idioma].windspeed, dado: weather.current.windspeed + " km/h" },
+    { titulo: translations[idioma].humidity, dado: weather.hourly.relative_humidity_2m[0] + "%" },
+    { titulo: translations[idioma].precipitation, dado: weather.hourly.precipitation[0] + "mm" },
   ] : [];
 
   return (
