@@ -39,20 +39,10 @@ interface WeatherData {
 
 export default function Home() {
 
-const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Garantir que o theme está disponível no client
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const bgClass = resolvedTheme === "dark" ? "bg-[#02012C] text-white" : "bg-white text-black";
-
   const [cidade, setCidade] = useState<string>("");
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string>("");
- const { idioma, setIdioma } = useLanguage();
+  const { idioma } = useLanguage();
 
   async function handleSearch() {
     try {
@@ -69,7 +59,7 @@ const { theme, resolvedTheme } = useTheme();
   }
 
   return (
-    <div className={`${bgClass} p-5 sm:p-10 min-h-screen`}>
+    <div className={`bg-[#02012C] p-5 sm:p-10 min-h-screen`}>
       <Header />
       <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10">
         {translations[idioma].welcome}

@@ -3,12 +3,9 @@
 import { useState } from "react";
 import { translations } from "@/utils/translations";
 import ButtonModalConfig from "./ButtonModalConfig";
-import { useTheme } from "next-themes";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function ModalConfig() {
-  const { theme, setTheme } = useTheme();
-
   // pega o idioma do contexto global
   const { idioma, setIdioma } = useLanguage();
 
@@ -19,23 +16,9 @@ export default function ModalConfig() {
   const temperaturas = ["celsius", "fahrenheit"] as const;
 
   return (
-    <div className="bg-[#262540] w-[200px] h-[300px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10 overflow-y-auto">
-      
-      {/* Temas */}
-      <div className="flex flex-col gap-2">
-        <p className="text-[#ACACB7]">{translations[idioma].theme}</p>
-        {temas.map((tema) => (
-          <ButtonModalConfig
-            key={tema}
-            label={tema === "dark" ? translations[idioma].dark : translations[idioma].light}
-            isActive={theme === tema}
-            onClick={() => setTheme(tema)}
-          />
-        ))}
-      </div>
-
+    <div className="bg-[#262540] w-[200px] h-[280px] flex flex-col border border-[#3C3B5E] rounded-md p-2 absolute top-12 left-[-85px] z-10 overflow-y-auto">
       {/* Idiomas */}
-      <div className="flex flex-col gap-2 mt-4">
+      <div className="flex flex-col gap-2">
         <p className="text-[#ACACB7]">{translations[idioma].language}</p>
         {opcoesIdiomas.map((lang) => (
           <ButtonModalConfig
