@@ -5,6 +5,7 @@ import CardHourlyForecast from "./CardHourlyForecast";
 import getClimaIcon from "@/utils/getClimaIcon";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/utils/translations";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface HourlyForecastProps {
   hourly: {
@@ -35,19 +36,23 @@ export default function HourlyForecast({
     <div className="block bg-[#262540] border-none rounded-md p-5 text-white">
       <div className="flex flex-row items-center justify-around gap-10">
         <p className="font-semibold">{translations[idioma].hourlyForecast}</p>
-        <select
-          name=""
-          id=""
-          className="bg-[#3C3B5E] border-none rounded-md p-2"
-        >
-          <option value="">{translations[idioma].monday}</option>
-          <option value="">{translations[idioma].tuesday}</option>
-          <option value="">{translations[idioma].wednesday}</option>
-          <option value="">{translations[idioma].thursday}</option>
-          <option value="">{translations[idioma].friday}</option>
-          <option value="">{translations[idioma].saturday}</option>
-          <option value="">{translations[idioma].sunday}</option>
-        </select>
+        <Select>
+          <SelectTrigger className="w-[180px] bg-[#3C3B5E] text-white border-none rounded-md">
+            <SelectValue placeholder={translations[idioma].monday} />
+          </SelectTrigger>
+          <SelectContent className="bg-[#3C3B5E] text-white border-none">
+            <SelectGroup>
+              <SelectLabel>{translations[idioma].days}</SelectLabel>
+              <SelectItem value="monday">{translations[idioma].monday}</SelectItem>
+              <SelectItem value="tuesday">{translations[idioma].tuesday}</SelectItem>
+              <SelectItem value="wednesday">{translations[idioma].wednesday}</SelectItem>
+              <SelectItem value="thursday">{translations[idioma].thursday}</SelectItem>
+              <SelectItem value="friday">{translations[idioma].friday}</SelectItem>
+              <SelectItem value="saturday">{translations[idioma].saturday}</SelectItem>
+              <SelectItem value="sunday">{translations[idioma].sunday}</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex flex-col gap-3 my-5">
         {hourly.time.slice(startIdx, endIdx).map((time, idx) => (

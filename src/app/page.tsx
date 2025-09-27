@@ -9,7 +9,6 @@ import { getWeather } from "@/services/getWeather";
 import HourlyForecast from "@/components/HourlyForecast/HourlyForecast";
 import DailyForecast from "@/components/DailyForecast/DailyForecast";
 import InfoForecast from "@/components/InfosForecast/InfoForecast";
-import { useTheme } from "next-themes";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/utils/translations";
 
@@ -59,7 +58,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`bg-[#02012C] p-5 sm:p-10 min-h-screen`}>
+    <div className={`bg-[#02012C] text-white p-5 sm:p-10 min-h-screen`}>
       <Header />
       <h1 className="text-center text-[30px] sm:text-[40px] font-bold py-10">
         {translations[idioma].welcome}
