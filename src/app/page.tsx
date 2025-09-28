@@ -69,7 +69,7 @@ export default function Home() {
           <input
             type="text"
             placeholder={translations[idioma].searchPlaceholder}
-            className="w-full h-[40px] bg-[#ffffff] dark:bg-[#262540] border-none rounded-md pl-10 text-white"
+            className="w-full h-[40px] bg-[#262540] border-none rounded-md pl-10 text-white"
             value={cidade}
             onChange={(e) => setCidade(e.target.value)}
             onKeyDown={(e) => {

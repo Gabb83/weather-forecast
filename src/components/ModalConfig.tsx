@@ -15,7 +15,7 @@ export default function ModalConfig() {
         {opcoesIdiomas.map((lang) => (
           <ButtonModalConfig
             key={lang}
-            label={lang === "português" ? "Português" : "Inglês"}
+            label={lang === "português" ? translations[idioma].portuguese : translations[idioma].english}
             isActive={lang === idioma}
             onClick={() => setIdioma(lang)}
           />
