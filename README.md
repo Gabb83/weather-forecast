@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather Forecast App 🌤️
 
-## Getting Started
+## Descrição 📝
 
-First, run the development server:
+Este projeto é uma aplicação de previsão do tempo construída com **React** e **Next.js**, utilizando **TailwindCSS** para estilização. A aplicação exibe a previsão horária do tempo, permitindo que o usuário selecione o dia da semana e veja as temperaturas e condições climáticas correspondentes. Além disso, possui suporte a **multilínguas**, atualmente português e inglês.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+O objetivo é demonstrar integração de componentes React, manipulação de dados de API de clima e implementação de interface interativa com paginação e filtros. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O Projeto foi inspirado em um exercício do Front Mentor, https://www.frontendmentor.io/challenges/weather-app-K1FhddVm49
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades 📝
 
-## Learn More
+- Exibição de previsão horária por dia da semana.
+- Paginação de horários (6 horários por página).
+- Suporte a múltiplos idiomas (PT/EN).
+- Seleção de dia da semana via dropdown (`<Select>`).
+- Ícones dinâmicos de clima baseados no código meteorológico.
+- Interface responsiva para desktop e mobile estilizadas com TailwindCSS.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologias Utilizadas ⚙️
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **React 18**
+- **Next.js 13** (App Router)
+- **TypeScript**
+- **TailwindCSS**
+- **Context API** para gerenciamento de idioma
+- **Vercel**
+- Componentes reutilizáveis (`CardHourlyForecast`, `Select`, etc.)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy 🚀
+- https://weather-forecast-brown-theta-82.vercel.app
+---
